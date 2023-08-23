@@ -214,18 +214,20 @@ let currentSection = 1;
 loadBlog(blogsections[currentSection]);
 
 function loadBlog(url){
+    document.getElementById("blogerror").classList.remove("hidden");
     let xml = new XMLHttpRequest();
     xml.open("GET", url, true);
 
     xml.onload = function(){
         if(this.status == 200){
+            document.getElementById("blogerror").classList.add("hidden");
             let entry = JSON.parse(xml.responseText);
             setentry(entry);
-        }
-        else{
-            document.getElementById("blogerror").classList.remove("hidden");
+            
         }
     }
+
+
     xml.send();
 }
 
