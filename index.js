@@ -1,5 +1,8 @@
 let j = 0;
 
+const $ = require( "jquery" );
+
+
 let links = document.getElementsByTagName("nav")[0].children;
 document.getElementById("button1").onclick = function(){
 
