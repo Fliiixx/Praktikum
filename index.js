@@ -1,8 +1,5 @@
 let j = 0;
 
-const $ = require( "jquery" );
-
-
 let links = document.getElementsByTagName("nav")[0].children;
 document.getElementById("button1").onclick = function(){
 
@@ -68,74 +65,56 @@ function dings(){
 
 //------------------------------------------------------------------------------------------------------
 
-let textInputs = Array.from(document.getElementsByClassName("text"));
-let mail = document.getElementById("email");
-let icons = document.getElementsByClassName("inpIcon");
+
+let inputs = Array.from(document.getElementsByClassName("inp"));
 let mes = document.getElementById("warningMessage");
+let icons = document.getElementsByClassName("inpIcon");
+let submit = document.getElementById("submit");
 
-
-for(let i = 0; i < textInputs.length; i++){
-    textInputs[i].onkeyup = dangs;
-    textInputs[i].onblur = dangs;
+for(i in inputs){
+    inputs[i].addEventListener("keyup", checkinp);
+    inputs[i].addEventListener("blur", checkinp);
 }
 
-
-mail.onkeyup = dungs;
-mail.onblur = dungs;
-
-function dungs(){
-    let rx =  new RegExp(/^[A-ZÄ-Üa-zä-ü0-9\.]{5,99}@[a-z]{3,7}\.[a-z]{2,5}$/g);
-    if(this.value.match(rx)){
-        setIcon(true, 2);
+function checkinp(){
+    let i = inputs.indexOf(this);
+    let rx;
+    if(i == 0 || i == 1){
+        rx = new RegExp(/^[A-ZÄ-Ü][a-zä-ü]{2,13}$/g)
+        checkText(this.value, rx, i);
     }
-
-    else{
-        setIcon(false, 2);
-        mes.innerHTML = "Ungültige E-Mail";
+    else if(i == 2){
+        rx =  new RegExp(/^[A-ZÄ-Üa-zä-ü0-9\.]{5,25}@[a-z]{3,7}\.[a-z]{2,5}$/g);
+        checkEmail(this.value, rx, i);
     }
-    check();
-}
-let nachricht = document.getElementById("nachricht");
-nachricht.onkeyup = dongs;
-nachricht.onblur = dongs;
-
-
-function dongs(){
-    console.log(this.value);
-    if(this.value == ""){
-        setIcon(false, 3);
-        mes.innerHTML = "Nachricht darf nicht leer sein!";
+    else if(i == 3){
+        if(this.value == ""){
+            setIcon(false, i);
+            mes.innerHTML = "Nachricht darf nicht leer sein!";
+        }
+        else{
+            setIcon(true, i);
+        }
     }
-    else{
-        setIcon(true, 3);
-    }
-    check();
-
 }
 
-function dangs(){
-    let bez;
+function checkText(text, rx, i){
+    let bez = "Vorname";
+        if(i == 1)
+            bez = "Nachname";
 
-    let rx = new RegExp(/^[A-ZÄ-Ü][a-zä-ü]{2,13}$/g);
-    let i = textInputs.indexOf(this);
-    if(i == 0)
-        bez = "Vorname";
-    else{
-        bez = "Nachname"
-    }
-
-    if(this.value.match(rx)){
+    if(text.match(rx)){
         setIcon(true, i);
     }
     else{
         setIcon(false, i);
-        if(this.value == ""){
+        if(text == ""){
             mes.innerHTML = bez + " darf nicht leer sein"
         }
-        else if(this.value.match(/[^A-ZÄ-Üa-zä-ü]{1,}/)){
+        else if(text.match(/[^A-ZÄ-Üa-zä-ü]{1,}/)){
             mes.innerHTML = bez + " darf nur aus Buchstaben bestehen"
         }
-        else if(!this.value.match(/^[A-ZÄ-Ü]/g)){
+        else if(!text.match(/^[A-ZÄ-Ü]/g)){
             mes.innerHTML = bez + " muss mit Großbuchstaben beginnen!"
         }
         else{
@@ -143,10 +122,21 @@ function dangs(){
         }
 
     }
-    check();
+}
+
+function checkEmail(email, rx, i){
+    if(email.match(rx)){
+        setIcon(true, i);
+    }
+
+    else{
+        setIcon(false, i);
+        mes.innerHTML = "Ungültige E-Mail";
+    }
 }
 
 function setIcon(toggle, i){
+    let icons = document.getElementsByClassName("inpIcon");
     if(toggle){
         icons[i].classList.remove("invisible", "color-warning");
         icons[i].classList.add("color-bg2");
@@ -158,19 +148,17 @@ function setIcon(toggle, i){
         icons[i].classList.remove("invisible", "color-bg2");
         icons[i].classList.add("color-warning");
     }
-
-
-
+    check();
 }
-let submit = document.getElementById("submit");
+
 function check(){
+    
     let c = true;
     for(let i = 0; i < icons.length; i++){
         if(icons[i].classList.contains("invisible") || icons[i].innerHTML == "warning"){
             c = false;
             break;
         }
-
     }
     
     if(c){
@@ -182,32 +170,27 @@ function check(){
         let disabled = document.createAttribute("disabled");
         disabled.value = "disabled";
         submit.setAttributeNode(disabled);
-
-
     }
-
-
-
 }
 
 
 submit.onclick = function(){
-    //document.getElementById("form1").submit();
-    for(let i = 0; i<textInputs.length; i++){
-        textInputs[i].value = "";
+    
+    for(let i = 0; i<inputs.length; i++){
+        inputs[i].value = "";
     }
     for(let i = 0; i < icons.length; i++){
         icons[i].classList.add("invisible");
     }
     check();
-    mail.value = "";
-    nachricht.value = "";
     mes.innerHTML = "Erfolgreich gesendet!";
-    
+
 }
 
 //------------------------------------------------------------------------------------------------------
 
+
+//=>improve with fetchAPI
 
 let blogsections = ["blog/2023-4-17.json","blog/2023-4-18.json","blog/2023-4-19.json"];
 
