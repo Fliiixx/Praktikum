@@ -1,27 +1,19 @@
-let j = 0;
-
 let links = document.getElementsByTagName("nav")[0].children;
 document.getElementById("button1").onclick = function(){
-
-
-    if(j % 2 == 0){
+    if(!links[0].classList.contains("hidden")){
         for(let i = 0; i < links.length; i++){
             links[i].classList.add("hidden");
         }
-
         document.getElementById("h").style.marginTop = "0em";
     }
 
     else{
         for(let i = 0; i < links.length; i++){
-            console.log(links[i]);
             links[i].classList.remove("hidden");
         }
 
         document.getElementById("h").style.marginTop = "";
-    }
-    j++;
-    
+    }    
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -49,10 +41,10 @@ let a = document.getElementsByTagName("a");
 let kompetenzen = document.getElementsByClassName("sumary-kompetenzen");
 
 for(let i = 0; i < kompetenzen.length; i++){
-    kompetenzen[i].onclick = dings;
+    kompetenzen[i].onclick = clickEffect;
 }
 
-function dings(){
+function clickEffect(){
     if(this.classList.contains("bgr-color-pr3", "color-pr1")){
         this.classList.remove("bgr-color-pr3", "color-pr1");
         this.classList.add("bgr-color-pr3l");
@@ -199,6 +191,7 @@ let blogsections = ["blog/2023-4-17.json","blog/2023-4-18.json","blog/2023-4-19.
 let currentSection = 1;
 loadBlog(blogsections[currentSection]);
 
+/* AJAX:
 function loadBlog(url){
     document.getElementById("blogerror").classList.remove("hidden");
     let xml = new XMLHttpRequest();
@@ -208,14 +201,26 @@ function loadBlog(url){
         if(this.status == 200){
             document.getElementById("blogerror").classList.add("hidden");
             let entry = JSON.parse(xml.responseText);
-            setentry(entry);
-            
+            setentry(entry); 
         }
     }
-
-
     xml.send();
 }
+*/
+
+//Fetch:
+function loadBlog(url){
+    let warning = document.getElementById("blogerror");
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        warning.classList.add("hidden");
+        setentry(data);
+    })
+    .catch(err => warning.classList.remove("hidden"))
+}
+
+
 
 function setentry(entry){
     document.getElementById("blog").classList.remove("hidden");
