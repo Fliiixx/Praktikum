@@ -1,18 +1,22 @@
 let links = document.getElementsByTagName("nav")[0].children;
+
+
+
 document.getElementById("button1").onclick = function(){
-    if(!links[0].classList.contains("hidden")){
-        for(let i = 0; i < links.length; i++){
+    if(!links[1].classList.contains("hidden")){
+        for(let i = 1; i < links.length; i++){
             links[i].classList.add("hidden");
         }
-        document.getElementById("h").style.marginTop = "0em";
+        this.innerHTML = '<i class="material-symbols-outlined md-24">menu</i>';
+        document.getElementById("h").style.marginTop = "1.75rem";
     }
 
     else{
-        for(let i = 0; i < links.length; i++){
+        for(let i = 1; i < links.length; i++){
             links[i].classList.remove("hidden");
         }
-
         document.getElementById("h").style.marginTop = "";
+        this.innerHTML = '<i class="material-symbols-outlined md-24">close</i>';
     }    
 }
 
@@ -25,13 +29,13 @@ let a = document.getElementsByTagName("a");
         a[i].onclick = function y(){
             for(let j = 0; j < main.length; j++){
                 main[j].classList.add("hidden");
-                links[j].classList.remove("bgr-color-pr1");
-                links[j].classList.remove("color-pr3");
+                links[j+1].classList.remove("bgr-color-pr1");
+                links[j+1].classList.remove("color-pr3");
             }
         
             main[i].classList.remove("hidden");
-            links[i].classList.add("bgr-color-pr1");
-            links[i].classList.add("color-pr3");
+            links[i+1].classList.add("bgr-color-pr1");
+            links[i+1].classList.add("color-pr3");
         }
 
 }
@@ -47,11 +51,11 @@ for(let i = 0; i < kompetenzen.length; i++){
 function clickEffect(){
     if(this.classList.contains("bgr-color-pr3", "color-pr1")){
         this.classList.remove("bgr-color-pr3", "color-pr1");
-        this.classList.add("bgr-color-pr3l");
+        this.classList.add("bgr-color-pr3l", "shadow1");
     }
     else{
         this.classList.add("bgr-color-pr3", "color-pr1");
-        this.classList.remove("bgr-color-pr3l");
+        this.classList.remove("bgr-color-pr3l", "shadow1");
     }
 }
 

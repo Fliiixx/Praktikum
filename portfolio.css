@@ -87,6 +87,7 @@
 .p-10{padding: 0.625rem;}
 .p-14{padding: 0.875rem;}
 .p-18{padding: 1.125rem;}
+.pl-18{padding-left: 1.125rem;}
 
 /*margin*/
 .mt-0{margin-top: 0;}
@@ -121,6 +122,8 @@
 
 .width-100p{width: 100%;}
 .width-102p{width: 102%;}
+
+.fit-cover{object-fit: cover;}
 
 .font-size-12{font-size: 0.75rem;}
 .font-size-14{font-size: 0.875rem;}
@@ -161,6 +164,10 @@ html, textarea{
 
 }
 
+nav p{
+  flex: 8 0 0;
+}
+
 
 
 .material-icons.md-18, .material-symbols-outlined.md-18{ font-size: 1.125rem; }
@@ -170,10 +177,7 @@ html, textarea{
 
 
 
-
 #wrapper{
-
-    
     grid-template-columns: 58% 2% 40%;
     grid-template-areas: 
         "n n n" 
@@ -188,6 +192,7 @@ nav{
     top: 0;
     left: 0;
     right: 0;
+    font-family:cursive;
 }
 nav a{
     flex: auto;
@@ -235,6 +240,13 @@ header p span{
     user-select: none;
 }
 
+
+#kompetenzen summary, nav *,.shadow1{
+  border-radius: 0.3rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
 main{
     grid-area: m;
 }
@@ -263,7 +275,7 @@ footer a:visited{
 
 
 
-@media (max-width: 480px){
+@media (max-width: 600px){
     body{
         min-width: 260px;
     }
@@ -271,18 +283,37 @@ footer a:visited{
     nav{
         flex-direction: column;
     }
+    nav p{
+      flex-basis: 0;
+  
+    }
+    nav a{
+      padding-left: 1rem;
+      text-align: left;
+    }
+    nav div{
+      display: block;
+  
+    }
+    #p1{
+      display: block;
+    }
     #button1{
         display: block;
         z-index: 2;
-        width: 2rem;
         position: fixed;
-        right: 0.4rem;
+        top: 0.1rem;
+        right: 0.7rem;
     }
+    #button1:hover{
+      background-color: #087963;
+    }
+    
 
 
     header{
         margin: 0;
-        margin-top: 4.7rem;
+        margin-top: 9.7rem;
     }
     
     .grid-2b2-max-Content, #kompetenzen details div{

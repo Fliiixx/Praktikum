@@ -23,8 +23,11 @@
 <body class="bgr-color-pr1 format">
 
     <div id="wrapper" class="bgr-color-bg2 color-bg2 p-2 b-4 grid">
-        <input class="hidden" type="button" id="button1" value="="/>
-        <nav class="cild color-pr1 bgr-color-pr3 flex fixed font-size-20 text-align-center bold format gap-4 z1" id="nav">
+        <button class="hidden color-pr1 bgr-color-bg2 pl-4 pr-4 b-none" type="button" id="button1">
+          <i class="material-symbols-outlined md-24">close</i>
+        </button>
+        <nav class="cild color-pr1 bgr-color-pr3 flex fixed font-size-20 text-align-center bold format z1 gap-4" id="nav">
+            <p class="color-pr1 bgr-color-bg2 text-align-left pl-18">Portfolio</p>
             <a class="bgr-color-pr1 color-pr3">Über mich</a>
             <a>Kompetenzen</a>
             <a>Referenzen</a>
@@ -38,10 +41,10 @@
                 <source media="(min-width: 769px)" srcset="img/big.png">
                 <source media="(min-width: 481px)" srcset="img/middle.png">
                 <!---Fallback--->
-                <img class="bb-4 height-160 width-100p" src="img/small.png" alt="wilde Blume vor einem Gebirgssee">
+                <img class="bb-4 height-160 width-100p fit-cover" src="img/small.png" alt="wilde Blume vor einem Gebirgssee">
             
             </picture>
-            <p class="bgr-color-bg2 color-pr1 p-6 absolute font-size-24 text-align-center bold b-2">
+            <p class="bgr-color-bg2 color-pr1 p-6 absolute font-size-24 text-align-center bold b-2 shadow1">
                 <span class="underline">Feluxe Güntsch</span> 
                 <br/>
                 <i class="material-icons md-24 color-pr2" >square</i> P O R T F O L I O
@@ -50,7 +53,7 @@
         </header>
 
         <main class="cild bgr-color-pr1 color-pr3 p-18 b-2 text-align-justify height-480">
-            <section id="ueberMich" class="main hidden font-size-18">
+            <section id="ueberMich" class="main font-size-18">
 
                 
                 <h1 class="pb-4"><i class="material-icons md-18 color-pr2">square</i>
@@ -83,7 +86,7 @@
             </section>
             <section id="kompetenzen" class="main font-size-18 hidden">
                 
-                <details class="bb-4">
+                <details class="">
                     <summary class="bgr-color-pr3 color-pr1 p-8 sumary-kompetenzen"><h1>Webentwicklung</h1></summary>
                     <br>
                     <div class="gap-4 p-2">
@@ -95,9 +98,10 @@
                         <p>ca. 12h/Woche</p>
                     </div>
                     <br>
+                    <hr class="bb-4">
                 </details>
                 <br><br>
-                <details class="bb-4">
+                <details>
                     <summary class="bgr-color-pr3 color-pr1 p-8 sumary-kompetenzen"><h1>Sprachen</h1></summary>
                     <br>
                     <div class="gap-4 p-2">
@@ -112,9 +116,10 @@
                         
                     </div>
                     <br>
+                    <hr class="bb-4">
                 </details>
                 <br><br>
-                <details class="bb-4">
+                <details>
                     <summary class="bgr-color-pr3 color-pr1 p-8 sumary-kompetenzen"><h1>Computerspiele</h1></summary>
                     <br>
                     <div class="gap-4 p-2">
@@ -139,13 +144,14 @@
                         <b>BOTW:</b>
                         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;80h</p>
 
-
+                        
                         
                     </div>
                     <br>
+                    <hr class="bb-4">
                 </details>
                 <br><br>
-                <details class="bb-4">
+                <details>
                     <summary class="bgr-color-pr3 color-pr1 p-8 sumary-kompetenzen"><h1>Sonstiges</h1></summary>
                     <br>
                     <div class="gap-4 p-2">
@@ -153,6 +159,7 @@
                         
                     </div>
                     <br>
+                    <hr class="bb-4">
                 </details>
 
 
@@ -166,7 +173,7 @@
             
             </section>
 
-            <section id="kontakt" class="main font-size-18">
+            <section id="kontakt" class="main hidden font-size-18">
 
                 <h1 class="pb-4"><i class="material-icons md-18 color-pr2">square</i>
                     Meine Kontaktdaten
@@ -211,7 +218,7 @@
                     <i class="material-icons md-24 color-bg2 invisible inpIcon">check</i>
 
                     <p></p>
-                    <p><input id="submit" class="width-100p height-24 bgr-color-pr3 color-pr1 bold font-size-18 disabled" type="submit" 
+                    <p><input id="submit" class="width-100p height-24 bgr-color-pr3 color-pr1 bold font-size-18 shadow1 disabled" type="submit" 
                         name="email" disabled="disabled"></p>
 
 
@@ -235,9 +242,9 @@
 
 
             
-            <h1 class="bgr-color-pr3 color-pr1 p-8 m-10">Block</h1>
+            <h1 class="bgr-color-pr3 color-pr1 p-8 m-10 shadow1">Block</h1>
             <div id="blog" class="m-10 hidden">
-                <p class="bgr-color-pr3l inline-block p-14 text-align-center float-left" id="blogdate"></p>
+                <p class="bgr-color-pr3l inline-block p-14 text-align-center float-left shadow1" id="blogdate"></p>
 
                 <h2 class="font-size-16" id="blogtitle"></h2>
                 <br>
@@ -249,9 +256,9 @@
 
                 <br>
                 <div class="text-align-center" id="blogbuttons">
-                    <button id="blogleft" class="bgr-color-pr3l color-pr3 b-none bold" title="vorherigen Blog anzeigen"><i class="material-icons" >arrow_left</i></button>
-                    <button id="blogunfold" class="bgr-color-pr3l color-pr3 b-none bold" title="ganzen Blog anzeigen"><i class="material-symbols-outlined">menu_book</i></button>
-                    <button id="blogright" class="bgr-color-pr3l color-pr3 b-none bold" title="nächsten Blog anzeigen"><i class="material-icons" >arrow_right</i></button>
+                    <button id="blogleft" class="bgr-color-pr3l color-pr3 b-none bold shadow1" title="vorherigen Blog anzeigen"><i class="material-icons" >arrow_left</i></button>
+                    <button id="blogunfold" class="bgr-color-pr3l color-pr3 b-none bold shadow1" title="ganzen Blog anzeigen"><i class="material-symbols-outlined">menu_book</i></button>
+                    <button id="blogright" class="bgr-color-pr3l color-pr3 b-none bold shadow1" title="nächsten Blog anzeigen"><i class="material-icons" >arrow_right</i></button>
                 </div>
             </div>
 
