@@ -228,7 +228,7 @@ aside{grid-area: a;}
 footer{grid-area: f;}
 
 
-#kompetenzen summary, nav{
+#kompetenzen summary, nav, i{
   list-style: none;
   user-select: none;
 }
@@ -241,6 +241,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 /*psudo-clases*/
 nav a:not(.bgr-color-pr1):hover, #submit:not(.disabled):hover, #blogbuttons button:not(.disabled):hover{
   background-color: rgb(160, 160, 160);
+  cursor: pointer;
 }
 #submit:disabled:hover, #blogbuttons button:disabled:hover{
     cursor: not-allowed;
@@ -257,6 +258,12 @@ nav a:not(.bgr-color-pr1):hover, #submit:not(.disabled):hover, #blogbuttons butt
 footer a:visited{
     color: var(--primary2);
 }
+
+summary:hover, button:hover{
+  cursor: pointer;
+}
+
+
 
 
 
