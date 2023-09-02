@@ -100,6 +100,7 @@
 .mt-8{margin-top: 0.5rem;}
 .m-10{margin: 0.625rem;}
 .m-14{margin: 0.875rem;}
+.mr-14{margin-right: 0.875rem;}
 .m-18{margin: 1.125rem;}
 
 
@@ -113,6 +114,7 @@
 .float-right{float: right;}
 .float-left{float: left;}
 
+/*height*/
 .height-18, #kontakt input:not(#submit){height: 1.125rem;}
 .height-24{height: 1.5rem}
 .height-48{height: 3rem;}
@@ -120,11 +122,13 @@
 .height-160{height: 10rem;}
 .height-480{min-height: 43rem;}
 
+/*width*/
 .width-100p{width: 100%;}
 .width-102p{width: 102%;}
 
 .fit-cover{object-fit: cover;}
 
+/*font-size*/
 .font-size-12{font-size: 0.75rem;}
 .font-size-14{font-size: 0.875rem;}
 .font-size-16{font-size: 1rem;}
@@ -133,16 +137,20 @@
 .font-size-24, h1{font-size: 1.5rem;}
 .font-size-28{font-size: 1.75rem;}
 
+/*text-align*/
 .text-align-center{text-align: center;}
 .text-align-justify{text-align: justify;}
 .text-align-right{text-align: right;}
 .text-align-left, h1{text-align: left;}
+
+/*other*/
 .underline{text-decoration: underline;}
 .bold, b{font-weight: 700;}
 .bb, #kontakt input{border-radius: 5px;}
-
 .z1{z-index: 1;}
+hr{border: solid 0.09rem;}
 
+/*more complex classed*/
 .format{
     max-width: 1440px;
     margin-left: auto;
@@ -152,6 +160,11 @@
 .grid-2b2-max-Content, #kompetenzen details div{
     display: grid;
     grid-template-columns: max-content 50%;
+}
+
+.grid-2b2{
+  display: grid;
+  grid-template-columns: 22rem auto;
 }
 
 .grid-2b3-max-Content{
@@ -164,19 +177,16 @@ html, textarea{
 
 }
 
-nav p{
-  flex: 8 0 0;
-}
 
 
-
+/*icons*/
 .material-icons.md-18, .material-symbols-outlined.md-18{ font-size: 1.125rem; }
 .material-icons.md-24, .material-symbols-outlined.md-24{ font-size: 1.5rem; vertical-align: -0.2rem;}
 .material-icons.md-36, .material-symbols-outlined.md-36 { font-size: 2.25rem; }
 .material-icons.md-48, .material-symbols-outlined.md-48 { font-size: 3rem; }
 
 
-
+/*normal CSS (element-specific)*/
 #wrapper{
     grid-template-columns: 58% 2% 40%;
     grid-template-areas: 
@@ -197,34 +207,11 @@ nav{
 nav a{
     flex: auto;
 }
-nav a:not(.bgr-color-pr1):hover, #submit:not(.disabled):hover, #blogbuttons button:not(.disabled):hover{
-    background-color: rgb(160, 160, 160);
-}
-#submit:disabled:hover, #blogbuttons button:disabled:hover{
-    cursor: not-allowed;
-}
-#submit:not(.disabled):active{
-    background-color: var(--primary3l);
-    color: var(--primary3);
-}
-
-#blogbuttons button:not(.disabled):active{
-    color: var(--primary1);
-    background-color: var(--primary3);
-
+nav p{
+  flex: 8 0 0;
 }
 
 
-hr{
-    border: solid 0.09rem;
-}
-
-
-
-header{
-    grid-area: h;
-    margin-top: 1rem;
-}
 header p{
     line-height: 2.0rem;
     right: 1rem;
@@ -235,57 +222,100 @@ header p span{
     text-underline-offset: 0.4rem;
 }
 
+header{grid-area: h; margin-top: 1rem;}
+main{grid-area: m;}
+aside{grid-area: a;}
+footer{grid-area: f;}
+
+
 #kompetenzen summary, nav{
-    list-style: none;
-    user-select: none;
+  list-style: none;
+  user-select: none;
 }
 
-
-#kompetenzen summary, nav *,.shadow1{
-  border-radius: 0.3rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+#kompetenzen summary, nav *, .games, .shadow1{
+border-radius: 0.3rem;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-
-main{
-    grid-area: m;
+/*psudo-clases*/
+nav a:not(.bgr-color-pr1):hover, #submit:not(.disabled):hover, #blogbuttons button:not(.disabled):hover{
+  background-color: rgb(160, 160, 160);
 }
-
-aside{
-    grid-area: a;
+#submit:disabled:hover, #blogbuttons button:disabled:hover{
+    cursor: not-allowed;
 }
-
-#blogdate{
-    margin: 0 0.875rem 0 0;
+#submit:not(.disabled):active{
+    background-color: var(--primary3l);
+    color: var(--primary3);
 }
+#blogbuttons button:not(.disabled):active{
+  color: var(--primary1);
+  background-color: var(--primary3);
 
-
-
-footer{
-    grid-area: f;
 }
-
 footer a:visited{
     color: var(--primary2);
 }
 
 
 
+#a1{
+  flex: 0 20 0;
+}
+
+/*too lazy to sort it*/
+#buliDaten img{
+  height: 1.25rem;
+  width: 1.25rem;
+  object-fit: scale-down;
+}
+.games{
+  padding: 0.5rem;
+  border: solid 0.1rem var(--primary3l);
+}
+.res{
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  border-right: 0.1rem solid var(--primary3l);
+  border-left: 0.1rem solid var(--primary3l);
+  border-radius: 0.4rem;
+}
+.res1{
+  border-top: 0.1rem solid var(--primary3l);
+}
+.res2{
+  border-bottom: 0.1rem solid var(--primary3l);
+}
+#spieltag2{
+  border-radius: 1rem;
+  padding: 0rem 0rem 0rem 0.75rem;
+  width: 3.9rem;
+  text-align: center;
+}
 
 
 
-
-@media (max-width: 600px){
+/*media querrys*/
+@media (max-width: 540px){
     body{
         min-width: 260px;
     }
 
     nav{
-        flex-direction: column;
+      flex-direction: column;
+      height: 1.73rem;
+      
+      overflow: hidden;
+      transition: height 1.4s;
     }
+    nav.franz{
+      height: 9.85rem;
+      transition-timing-function: ease-out;
+    }
+    
     nav p{
       flex-basis: 0;
-  
+      border-radius: 0;
     }
     nav a{
       padding-left: 1rem;
@@ -295,8 +325,8 @@ footer a:visited{
       display: block;
   
     }
-    #p1{
-      display: block;
+    nav:not(.franz){
+      pointer-events: none;
     }
     #button1{
         display: block;
@@ -309,11 +339,22 @@ footer a:visited{
       background-color: #087963;
     }
     
+    .grid-2b2{
+      grid-template-columns: 14rem auto;
+      font-size: 1rem;
+    }
 
+    #buliDaten img{
+      height: 1rem;
+      width: 1rem;
+      object-fit: scale-down;
+    }
+    
+    
 
     header{
         margin: 0;
-        margin-top: 9.7rem;
+        margin-top: 1.5rem;
     }
     
     .grid-2b2-max-Content, #kompetenzen details div{
@@ -329,13 +370,9 @@ footer a:visited{
 
 
     }
-    
-
-    
-
 }
 
-@media (max-width: 768px){
+@media (max-width: 800px){
     #wrapper{
         grid-template-columns: 100%;
         gap: 0.1rem;
@@ -350,4 +387,16 @@ footer a:visited{
 
 
     }
+}
+
+@media (min-width: 1050px){
+  .grid-2b2{
+    grid-template-columns: 30rem auto;
+    font-size: 1.75rem;
+  }
+  #buliDaten img{
+    height: 1.5rem;
+    width: 1.5rem;
+    object-fit: scale-down;
+  }
 }

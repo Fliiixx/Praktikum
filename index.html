@@ -24,14 +24,17 @@
 
     <div id="wrapper" class="bgr-color-bg2 color-bg2 p-2 b-4 grid">
         <button class="hidden color-pr1 bgr-color-bg2 pl-4 pr-4 b-none" type="button" id="button1">
-          <i class="material-symbols-outlined md-24">close</i>
+          <i class="material-symbols-outlined md-24">menu</i>
         </button>
         <nav class="cild color-pr1 bgr-color-pr3 flex fixed font-size-20 text-align-center bold format z1 gap-4" id="nav">
             <p class="color-pr1 bgr-color-bg2 text-align-left pl-18">Portfolio</p>
+            
             <a class="bgr-color-pr1 color-pr3">Über mich</a>
             <a>Kompetenzen</a>
-            <a>Referenzen</a>
+            <a>Spieltag</a>
             <a>Kontakt</a>
+            <a class="invisible" id="a1"></a>
+            
 
         </nav>
 
@@ -168,9 +171,13 @@
             </section>
 
             <section id="referenzen" class="main hidden">
-                <h1>Referenzen</h1>
-                <p>Alle Alle Alle Alle Alle Alle Alle Alle Alle AlleAlle Alle Alle Alle Alle Alle Alle Alle Alle AlleAlle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle AlleAlle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle Alle AlleAlle Alle Alle Alle AlleAlle Alle Alle Alle Alle</p>
-            
+                <h1 class="bgr-color-pr3l color-pr3 p-8 m-4 shadow1">Bundesliga <span id="spieltag"></span>:</h1>
+                <br>
+                <input type="number" id="spieltag2" placeholder="Spieltag">
+                <br><br>
+                <div id="buliDaten" class="font-size-24">
+
+                </div>
             </section>
 
             <section id="kontakt" class="main hidden font-size-18">
@@ -244,7 +251,7 @@
             
             <h1 class="bgr-color-pr3 color-pr1 p-8 m-10 shadow1">Block</h1>
             <div id="blog" class="m-10 hidden">
-                <p class="bgr-color-pr3l inline-block p-14 text-align-center float-left shadow1" id="blogdate"></p>
+                <p class="bgr-color-pr3l inline-block p-14 text-align-center float-left shadow1 mr-14" id="blogdate"></p>
 
                 <h2 class="font-size-16" id="blogtitle"></h2>
                 <br>

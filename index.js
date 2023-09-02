@@ -1,23 +1,22 @@
-let links = document.getElementsByTagName("nav")[0].children;
 
+let spj = 2023;
+let sp = 2;
+let nav = document.getElementById("nav");
+let links = nav.children;
 
 
 document.getElementById("button1").onclick = function(){
-    if(!links[1].classList.contains("hidden")){
-        for(let i = 1; i < links.length; i++){
-            links[i].classList.add("hidden");
-        }
-        this.innerHTML = '<i class="material-symbols-outlined md-24">menu</i>';
-        document.getElementById("h").style.marginTop = "1.75rem";
+    
+    if(nav.classList.contains("franz")){
+      nav.classList.remove("franz");
+      this.innerHTML = '<i class="material-symbols-outlined md-24">menu</i>';
     }
 
     else{
-        for(let i = 1; i < links.length; i++){
-            links[i].classList.remove("hidden");
-        }
-        document.getElementById("h").style.marginTop = "";
-        this.innerHTML = '<i class="material-symbols-outlined md-24">close</i>';
+      nav.classList.add("franz");
+      this.innerHTML = '<i class="material-symbols-outlined md-24">close</i>'; 
     }    
+      
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -26,7 +25,7 @@ let main = document.getElementsByTagName("main")[0].children;
 
 let a = document.getElementsByTagName("a");
     for(let i = 0; i<4; i++){
-        a[i].onclick = function y(){
+        a[i].onclick = () => {
             for(let j = 0; j < main.length; j++){
                 main[j].classList.add("hidden");
                 links[j+1].classList.remove("bgr-color-pr1");
@@ -37,15 +36,16 @@ let a = document.getElementsByTagName("a");
             links[i+1].classList.add("bgr-color-pr1");
             links[i+1].classList.add("color-pr3");
         }
-
 }
+
+
 
 //------------------------------------------------------------------------------------------------------
 
-let kompetenzen = document.getElementsByClassName("sumary-kompetenzen");
+let summarys = document.getElementsByClassName("sumary-kompetenzen");
 
-for(let i = 0; i < kompetenzen.length; i++){
-    kompetenzen[i].onclick = clickEffect;
+for(let summary of summarys){
+  summary.onclick = clickEffect;
 }
 
 function clickEffect(){
@@ -67,10 +67,10 @@ let mes = document.getElementById("warningMessage");
 let icons = document.getElementsByClassName("inpIcon");
 let submit = document.getElementById("submit");
 
-for(i in inputs){
-    inputs[i].addEventListener("keyup", checkinp);
-    inputs[i].addEventListener("blur", checkinp);
-}
+inputs.forEach(input => {
+  input.addEventListener("keyup", checkinp);
+  input.addEventListener("blur", checkinp);
+})
 
 function checkinp(){
     let i = inputs.indexOf(this);
@@ -94,7 +94,7 @@ function checkinp(){
     }
 }
 
-function checkText(text, rx, i){
+let checkText = (text, rx, i) => {
     let bez = "Vorname";
         if(i == 1)
             bez = "Nachname";
@@ -120,7 +120,7 @@ function checkText(text, rx, i){
     }
 }
 
-function checkEmail(email, rx, i){
+let checkEmail = (email, rx, i) => {
     if(email.match(rx)){
         setIcon(true, i);
     }
@@ -131,7 +131,7 @@ function checkEmail(email, rx, i){
     }
 }
 
-function setIcon(toggle, i){
+let setIcon = (toggle, i) => {
     let icons = document.getElementsByClassName("inpIcon");
     if(toggle){
         icons[i].classList.remove("invisible", "color-warning");
@@ -147,7 +147,7 @@ function setIcon(toggle, i){
     check();
 }
 
-function check(){
+let check = () => {
     
     let c = true;
     for(let i = 0; i < icons.length; i++){
@@ -170,13 +170,13 @@ function check(){
 }
 
 
-submit.onclick = function(){
+submit.onclick = () => {
     
-    for(let i = 0; i<inputs.length; i++){
-        inputs[i].value = "";
-    }
-    for(let i = 0; i < icons.length; i++){
-        icons[i].classList.add("invisible");
+  
+  inputs.forEach(inp => inp.value = "");
+
+    for(let icon of icons){
+        icon.classList.add("invisible");
     }
     check();
     mes.innerHTML = "Erfolgreich gesendet!";
@@ -226,7 +226,7 @@ function loadBlog(url){
 
 
 
-function setentry(entry){
+let setentry = entry => {
     document.getElementById("blog").classList.remove("hidden");
 
     document.getElementById("blogdate").innerHTML =
@@ -269,7 +269,7 @@ document.getElementById("blogunfold").onclick = function(){
     this.removeAttribute("title");
 }
 
-document.getElementById("blogleft").onclick = function(){
+document.getElementById("blogleft").onclick = ()=>{
     currentSection--;
     if(currentSection < 0){
         currentSection = blogsections.length - 1;
@@ -277,7 +277,112 @@ document.getElementById("blogleft").onclick = function(){
     loadBlog(blogsections[currentSection]);
 }
 
-document.getElementById("blogright").onclick = function(){
+document.getElementById("blogright").onclick = ()=>{
     currentSection = (currentSection+1) % blogsections.length;
     loadBlog(blogsections[currentSection]);
 }
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+
+
+//------------------------------------------------------------------------------------------------
+let link = "https://api.openligadb.de/getmatchdata/bl1/"
+
+;
+let sp2 = document.getElementById("spieltag2");
+sp2.value = sp;
+sp2.addEventListener("blur", loadsth);
+sp2.addEventListener("click", loadsth);
+sp2.addEventListener("keyup", loadsth);
+
+function loadsth(){
+  if(this.value == sp){
+
+  }
+
+  else{
+  if(this.value < 1 && this.value != ""){
+    this.value = 34;
+  }
+  else if(this.value > 34 && this.value != ""){
+    this.value = 1
+  }
+
+
+  if(this.value == ""){
+  }
+  else{
+    sp = this.value;
+    loadBuli(link+spj+"/"+sp);
+  }
+  }
+}
+
+
+
+
+let loadBuli = url => {
+  fetch(url)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("spieltag").innerHTML = (data[0].group.groupName);
+    let paste = document.getElementById("buliDaten");
+    paste.innerHTML = "";
+    for(let game of data){
+      paste.innerHTML +=
+      '<div class="games">'+
+      '<span class="grid-2b2 gap-4"><p>' +
+      '<img src="teams/'+game.team1.shortName+'.svg.png">' + 
+       ' '+game.team1.teamName + '</p>' +
+       '<p><span class="res1 res">'+game.matchResults[1].pointsTeam1+'</span></p></span>'+
+      
+      '<span class="grid-2b2 gap-4"><p><img src="teams/'+game.team2.shortName+'.svg.png">'+
+      ' '+game.team2.teamName +
+      '</p>' +
+      '<p><span class="res2 res">'+ game.matchResults[1].pointsTeam2 +'</span></p></span>'+
+      '</div><br>'
+    }
+
+
+
+  })
+  .catch(err =>{
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("spieltag").innerHTML = (data[0].group.groupName);
+      let paste = document.getElementById("buliDaten");
+      paste.innerHTML = "";
+      for(game of data){
+        paste.innerHTML +=
+        '<div class="games">'+
+        '<span class="grid-2b2 gap-4"><p>' +
+        '<img src="teams/'+game.team1.shortName+'.svg.png">' + 
+        ' '+game.team1.teamName + '</p>' +
+        '<p><span class="res1 res">--'+'</span></p></span>'+
+      
+        '<span class="grid-2b2 gap-4"><p><img src="teams/'+game.team2.shortName+'.svg.png">'+
+        ' '+game.team2.teamName +
+        '</p>' +
+        '<p><span class="res2 res">--' +'</span></p></span>'+
+        '</div><br>'
+      }
+
+
+
+  })
+  })
+
+
+
+
+}
+
+loadBuli(link+spj+"/"+sp)
